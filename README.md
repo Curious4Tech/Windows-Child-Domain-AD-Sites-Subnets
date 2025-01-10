@@ -122,7 +122,7 @@ For this part, let's use our parent domain DC. Signin with your parent domain cr
 
 ![image](https://github.com/user-attachments/assets/718123bb-e1f6-403d-989c-5d21a1c17186)
 
-3. Enter the **`IP Address`** and **`Subnet Mask`** (e.g., `192.168.2.0/24`) or depending or your IP adress range.
+3. Enter the **`IP Address`** and **`Subnet Mask`** (e.g., `192.168.2.0/24`), depending on your IP adress range.
 4. Associate the subnet with the site you created earlier and click on **`OK`**.
 
 ![image](https://github.com/user-attachments/assets/a763f2b3-6311-4f08-8ae5-a15b71aa5a19)
