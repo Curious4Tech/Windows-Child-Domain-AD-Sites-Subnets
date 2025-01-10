@@ -9,13 +9,14 @@ This guide will walk you through the process of promoting a Windows Server to a 
 ---
 
 ## **Table of Contents**
-1. [Prerequisites](#prerequisites)  
-2. [Promoting a Windows Server to a Child Domain](#promoting-a-windows-server-to-a-child-domain)  
-3. [Creating Sites and Subnets in Active Directory](#creating-sites-and-subnets-in-active-directory)  
-4. [Verification Steps](#verification-steps)  
-5. [Best Practices](#best-practices)  
-6. [Troubleshooting](#troubleshooting)
-7. [Conclusion](#conclusion)
+1. [Prerequisites](#prerequisites)
+2. [Constraints Before Promoting a Child Domain DC.](#constraints-before-promoting-a-child-domain-dc.)
+3. [Promoting a Windows Server to a Child Domain](#promoting-a-windows-server-to-a-child-domain)  
+4. [Creating Sites and Subnets in Active Directory](#creating-sites-and-subnets-in-active-directory)  
+5. [Verification Steps](#verification-steps)  
+6. [Best Practices](#best-practices)  
+7. [Troubleshooting](#troubleshooting)
+8. [Conclusion](#conclusion)
 
 ---
 
@@ -30,7 +31,7 @@ Before proceeding, ensure you have the following:
 ---
 
 
-# ✅ Key Constraints Before Promoting a Child Domain DC
+# ✅ Constraints Before Promoting a Child Domain DC.
 
 
 ## ✅ **Required Ports for Parent-Child Domain Communication**
