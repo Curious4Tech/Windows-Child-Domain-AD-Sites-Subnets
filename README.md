@@ -10,13 +10,12 @@ This guide will walk you through the process of promoting a Windows Server to a 
 
 ## **Table of Contents**
 1. [Prerequisites](#prerequisites)
-2. [Constraints Before Promoting a Child Domain DC](#constraints-before-promoting-a-child-domain-dc)
-3. [Promoting a Windows Server to a Child Domain](#promoting-a-windows-server-to-a-child-domain)  
-4. [Creating Sites and Subnets in Active Directory](#creating-sites-and-subnets-in-active-directory)  
-5. [Verification Steps](#verification-steps)  
-6. [Best Practices](#best-practices)  
-7. [Troubleshooting](#troubleshooting)
-8. [Conclusion](#conclusion)
+2. [Promoting a Windows Server to a Child Domain](#promoting-a-windows-server-to-a-child-domain)  
+3. [Creating Sites and Subnets in Active Directory](#creating-sites-and-subnets-in-active-directory)  
+4. [Verification Steps](#verification-steps)  
+5. [Best Practices](#best-practices)  
+6. [Troubleshooting](#troubleshooting)
+7. [Conclusion](#conclusion)
 
 ---
 
@@ -27,50 +26,6 @@ Before proceeding, ensure you have the following:
 - An existing **Active Directory Forest** with a parent domain.
 - Domain Administrator credentials for both the **parent domain** and the **child domain**.
 - Network details (IP ranges, site names, etc.) for your sites and subnets.
-
----
-
-
-# ✅ Constraints Before Promoting a Child Domain DC.
-
-
-## ✅ **Required Ports for Parent-Child Domain Communication**
-
-Ensure the following ports are open between the child and parent DCs:
-
-| **Protocol** | **Port** | **Description**             |
-|--------------|----------|-----------------------------|
-| TCP/UDP      | 53       | DNS                          |
-| TCP          | 88       | Kerberos                     |
-| TCP          | 135      | RPC                          |
-| TCP/UDP      | 389      | LDAP                         |
-| TCP/UDP      | 445      | SMB                           |
-| TCP          | 636      | LDAP over SSL                |
-| TCP/UDP      | 3268     | Global Catalog               |
-
-
-## **✅ Example DNS Setup on Child Domain DC:**
-
-🔧 The child domain DC must use the parent domain DC as its primary DNS server.
-
-| **Server Role**     | **IP Address**   | **DNS Configuration**       |
-|---------------------|------------------|-----------------------------|
-| Parent Domain DC     | 192.168.1.1      | Self (192.168.1.1)          |
-| Child Domain DC      | 192.168.2.1      | 192.168.1.1 (Parent DC IP)  |
-
----
-
-## **Summary of Constraints:**
-
-| **Constraint**            | **Required?** | **Description**                                |
-|---------------------------|---------------|------------------------------------------------|
-| DNS Server Configuration   | ✅ Yes        | Child DC must use the parent DC as DNS server. |
-| Network Connectivity       | ✅ Yes        | Ensure stable connectivity between DCs.        |
-| Trust Relationship         | ✅ Yes        | Automatic trust is created during promotion.   |
-| Admin Credentials          | ✅ Yes        | Use Domain Admin or Enterprise Admin.          |
-| Time Synchronization       | ✅ Yes        | Ensure time is synced between DCs.             |
-
-
 ---
 
 ## **1. Promoting a Windows Server to a Child Domain**
@@ -163,9 +118,29 @@ Ensure the following ports are open between the child and parent DCs:
 | Time sync errors                    | Time mismatch between parent and child DCs               | Sync time using **NTP server** or **parent DC**.             |
 
 
+## **✅ Example DNS Setup on Child Domain DC:**
+
+🔧 The child domain DC must use the parent domain DC as its primary DNS server.
+
+| **Server Role**     | **IP Address**   | **DNS Configuration**       |
+|---------------------|------------------|-----------------------------|
+| Parent Domain DC     | 192.168.1.1      | Self (192.168.1.1)          |
+| Child Domain DC      | 192.168.2.1      | 192.168.1.1 (Parent DC IP)  |
+
+
+## **Summary of Constraints:**
+
+| **Constraint**            | **Required?** | **Description**                                |
+|---------------------------|---------------|------------------------------------------------|
+| DNS Server Configuration   | ✅ Yes        | Child DC must use the parent DC as DNS server. |
+| Network Connectivity       | ✅ Yes        | Ensure stable connectivity between DCs.        |
+| Trust Relationship         | ✅ Yes        | Automatic trust is created during promotion.   |
+| Admin Credentials          | ✅ Yes        | Use Domain Admin or Enterprise Admin.          |
+| Time Synchronization       | ✅ Yes        | Ensure time is synced between DCs.             |
+
 ---
 
-## **Conclusion**  
+## **6. Conclusion**  
 
 By following this guide, you have successfully promoted a Windows Server to a **`child domain`** and configured **`sites and subnets`** in **`Active Directory`**. This setup enhances the efficiency of your network by optimizing **`replication traffic`** and ensuring that **`clients authenticate`** to the nearest domain controllers.
 
